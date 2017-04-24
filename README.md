@@ -29,8 +29,8 @@ Tokens can be created [here](https://api.slack.com/custom-integrations/legacy-to
 
 ```javascript
 module.exports = {
-    SLACKBOT_PREFIX: 'SLACK_TOKEN',
-    PREFIX_TWO: 'SLACK_TOKEN_TWO'
+    PREFIX_1: 'SLACK_TOKEN_1',
+    PREFIX_2: 'SLACK_TOKEN_2'
 }
 ```
 
