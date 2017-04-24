@@ -33,6 +33,8 @@ module.exports = {
 
 Where the key is the prefix the created slackbot will have, and the value is the token the slackBot will use.
 
+If you're adding new commands, consider adding a token with the key `SELF` and setting `NODE_ENV=dev`, which will automatically only start the `SELF` token. When the script runs outside of `NODE_ENV=dev`, `SELF` is removed from the array and is thereby not initialized unless in development mode. 
+
 ##Commands
 By default, to run a command you should type `!!<command> [args]` at the beginning of a message. To change this, edit the `prefix` key in `config/bot.js`.
 
