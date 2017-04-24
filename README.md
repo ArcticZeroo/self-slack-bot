@@ -2,7 +2,7 @@
 
 Self bot for slack, written in node.js!
 
-##Requirements
+## Requirements
 
 (These are installed automatically via npm)
 * frozor-slackbot
@@ -14,7 +14,7 @@ Self bot for slack, written in node.js!
 
 Lots of frozor! They laughed at me when I spent hours writing my own slack API when 50 of them exist for node, but who's laughing now? Can your API put spaces between every character in your message? Probably, but mine is BETTER!
 
-##Installation:
+## Installation:
 
 ```cmd
 git clone https://github.com/ArcticZeroo/self-slack-bot
@@ -38,7 +38,7 @@ Where the key is the prefix the created slackbot will have, and the value is the
 
 If you're adding new commands, consider adding a token with the key `SELF` and setting `NODE_ENV=dev`, which will automatically only start the `SELF` token. When the script runs outside of `NODE_ENV=dev`, `SELF` is removed from the array and is thereby not initialized unless in development mode. 
 
-##Commands
+## Commands
 
 By default, to run a command you should type `!!<command> [args]` at the beginning of a message. To change this, edit the `prefix` key in `config/bot.js`.
 
