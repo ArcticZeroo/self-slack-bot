@@ -1,5 +1,16 @@
-# self-slack-bot
+# Self-Slack-Bot
 Self bot for slack, written in node.js!
+
+##Requirements
+(These are installed automatically via npm)
+* frozor-slackbot
+* frozor-slack
+* frozor-websocket
+* frozor-logger
+* frozor-commands
+* Probably something else I forget and am too lazy to look at my package.json for
+
+Lots of frozor! They laughed at me when I spent hours writing my own slack API when 50 of them exist for node, but who's laughing now? Can your API put spaces between every character in your message? Probably, but mine is BETTER!
 
 ##Installation:
 ```cmd
