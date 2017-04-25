@@ -24,6 +24,7 @@ module.exports = [
     getCommand('Space'),
     getCommand('Status'),
     getCommand('AnimatedStatus'),
+    getCommand('Help'),
 
     ...CopypastaCommands
 ];

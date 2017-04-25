@@ -1,7 +1,7 @@
 function getCopypastaCommand(trigger, copypasta) {
     class CopypastaCommand extends Command{
         constructor(){
-            super(trigger);
+            super(trigger, [], `Sends a ${trigger} copypasta`);
         }
 
         run(msg){

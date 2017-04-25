@@ -1,6 +1,6 @@
 class UserInfoCommand extends Command{
     constructor(){
-        super('user', ['userinfo'], 'Users!', [new CommandArg('user')]);
+        super('user', ['userinfo', 'users', 'uinfo'], 'Information about a specified user', [new CommandArg('user')]);
     }
 
     run(msg, bot, extra){
@@ -8,13 +8,13 @@ class UserInfoCommand extends Command{
 
         function sendUserInfo(user) {
             function getInfoItem(name, value) {
-                return `*${name}*: ${value}`;
+                return [name, value];
             }
 
             let info = [];
 
-            info.push('Storage.Users.' + user.name);
-            info.push('-----------');
+            /*info.push('Storage.Users.' + user.name);
+            info.push('-----------');*/
             info.push(getInfoItem('ID', user.id));
             info.push(getInfoItem('Username', user.name));
 
@@ -27,18 +27,20 @@ class UserInfoCommand extends Command{
             }
 
             if(user.is_restricted){
-                info.push(getInfoItem('Is Restricted', user.is_restricted));
+                info.push(getInfoItem('Is Restricted', user.is_restricted.toYesNo()));
             }
 
             if(user.is_admin){
-                info.push(getInfoItem('Is Admin', user.is_admin));
+                info.push(getInfoItem('Is Admin', user.is_admin.toYesNo()));
             }
 
             if(user.is_bot){
-                info.push(getInfoItem('Is Bot', user.is_bot));
+                info.push(getInfoItem('Is Bot', user.is_bot.toYesNo()));
             }
 
-            msg.edit(info.join('\n'))
+            log.debug(info);
+
+            msg.edit('', { attachments: [ { color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
         }
 
         if(lookup.isValidSlackMention()){

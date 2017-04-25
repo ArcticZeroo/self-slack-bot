@@ -44,17 +44,18 @@ const config = require('./config');
 const commands = require('./commands');
 
 let slackBots = {};
-let commandExtra = {};
+let commandExtra = { commandHandler };
 
 function registerEvents(slackBot) {
-    slackBot.api.once('event', ()=>{
-        slackBot.firstEvent = Date.now();
+    slackBot.api.once('message', (msg)=>{
+        log.debug(`Setting first event on bot ${log.chalk.cyan(slackBot.prefix)}`);
+        slackBot.firstEvent = msg.ts;
     });
 
     slackBot.api.on('message', (msg)=>{
         if(msg.subtype || msg.hasOwnProperty('edited')) return;
 
-        if(msg.ts*1000 < slackBot.firstEvent) return;
+        if(msg.ts <= slackBot.firstEvent) return;
 
         if(slackBot.self && msg.user === slackBot.self.id){
             if(msg.text.startsWith(config.bot.prefix)){
@@ -89,6 +90,7 @@ function createBotFromPrefix(prefix) {
 
 if(DEVELOPMENT){
     createBotFromPrefix('SELF');
+    slackBots.SELF.api.on('event', (e)=> log.debug(e));
 }else{
     delete config.tokens['SELF'];
 

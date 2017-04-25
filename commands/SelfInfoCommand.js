@@ -1,6 +1,6 @@
 class SelfInfoCommand extends Command{
     constructor(){
-        super('self', ['selfinfo', 'me'], 'Self!');
+        super('self', ['selfinfo', 'me'], 'Info about the user running the bot.');
     }
 
     run(msg, bot, extra){

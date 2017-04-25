@@ -1,6 +1,6 @@
 class DisplayTimeCommand extends Command{
     constructor(){
-        super('time');
+        super('time', ['mytime'], 'Sends a message with the host\'s time.');
     }
 
     run(msg){

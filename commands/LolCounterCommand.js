@@ -1,6 +1,6 @@
 class LastMessageCommand extends Command{
     constructor(){
-        super('lol', ['lolcount'], 'Gets last message for a user', [new CommandArg('user', 'String')]);
+        super('lol', ['lolcount'], 'Gets "lol" count for a user', [new CommandArg('user', 'String')]);
     }
 
     run(msg, bot){
