@@ -6,7 +6,11 @@ class EvalCommand extends Command{
     run(msg, bot, extra){
         const start = Date.now();
 
-        const output = eval(msg.args.join(' '));
+        let output = eval(msg.args.join(' '));
+
+        if(output.length > 2900){
+            output = output.splice(0, 2900) + '...'
+        }
 
         const end = Date.now();
 
