@@ -45,6 +45,8 @@ Where the key is the prefix the created slackbot will have, and the value is the
 
 If you're adding new commands and would like to test them before deploying, consider adding a token with the key `SELF` and setting `NODE_ENV=dev`, which will automatically only start the `SELF` token. When the script runs outside of `NODE_ENV=dev`, `SELF` is removed from the array and is thereby not initialized unless in development mode.
 
+Once you've run `npm i` and set up `config/tokens.js`, just run `node main`! It's a bit spammy at first if you have a lot of slack orgs/teams, but after that it quiets down.
+
 ## Commands
 
 By default, to run a command you should type `!!<command> [args]` at the beginning of a message. To change this, edit the `prefix` key in `config/bot.js`.
