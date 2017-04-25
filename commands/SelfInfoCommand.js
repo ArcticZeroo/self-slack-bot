@@ -22,10 +22,10 @@ class SelfInfoCommand extends Command{
         info.push(getInfoItem('Top Emoji', `:${emojiTopUse[0]}: (${emojiTopUse[1]} Uses)`));
         info.push(getInfoItem('Emoji Type', bot.self.prefs.emoji_mode));
 
-        if(frecencyJumper.hasOwnProperty('')){
+        /*if(frecencyJumper.hasOwnProperty('')){
             let frecencyTop = frecencyJumper[''].sort((a,b)=> b.count - a.count)[0];
             info.push(getInfoItem('Most Frequently Visited User', `<@${frecencyTop.id}> (${frecencyTop.count} Visits)`));
-        }
+        }*/
 
         msg.edit('', { attachments: [ { color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
     }
