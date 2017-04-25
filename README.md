@@ -87,3 +87,16 @@ Available commands:
     * Will set status text / emoji. Options will be specifiable in the command on whether or not it should set text, emoji, or both, and whether it should propogate across all bots set up in `tokens.js`
 * user
     * takes a username or slack mention as an argument, and returns info about them.
+    
+## Add New Commands
+
+To add a new command, you need to do the following:
+
+* Create the command class somewhere in the code (I put separate commands in their own .js files)
+    * Documentation for commands can be found at the [frozor-commands](https://github.com/ArcticZeroo/frozor-commands) repo.
+* Instantiate the command class (I put them all inside commands/index.js by running getCommand, which I recommend you do if it's inside commands/ for ease of use)
+* Register it in the command handler (if you've put it inside commands/index.js, it is automatically registered for you, so you can skip this step)
+
+Check out any of the commands provided in `commands/` for some examples. It's pretty simple.
+
+To edit a message, call `message.edit(newText)` (this is async). To delete the message and send something to the user's DMs, call `message.reply(messageToSendToTheirDMs)`. If you don't want to delete the message, add a boolean as the second parameter (the value in this case would be `false` for `shouldDelete`).
