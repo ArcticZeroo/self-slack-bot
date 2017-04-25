@@ -6,7 +6,8 @@ class ClapCommand extends Command{
     }
 
     run(msg){
-        msg.edit(msg.text.replace(config.bot.prefix+msg.commandName, '').split('').join(' '));
+        // This is dumb but it works
+        msg.edit(msg.args.join(' ').split('').join(' '));
     }
 }
 
