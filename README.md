@@ -2,6 +2,13 @@
 
 Self bot for slack, written in node.js!
 
+## Features
+
+* Commands that can only be activated by you!
+* Multi-org (team) support
+* Made by a cool guy who has cool APIs
+* Very easy to add new commands
+
 ## Requirements
 
 (These are installed automatically via npm)
@@ -36,7 +43,7 @@ module.exports = {
 
 Where the key is the prefix the created slackbot will have, and the value is the token the slackBot will use.
 
-If you're adding new commands, consider adding a token with the key `SELF` and setting `NODE_ENV=dev`, which will automatically only start the `SELF` token. When the script runs outside of `NODE_ENV=dev`, `SELF` is removed from the array and is thereby not initialized unless in development mode. 
+If you're adding new commands and would like to test them before deploying, consider adding a token with the key `SELF` and setting `NODE_ENV=dev`, which will automatically only start the `SELF` token. When the script runs outside of `NODE_ENV=dev`, `SELF` is removed from the array and is thereby not initialized unless in development mode.
 
 ## Commands
 
@@ -100,3 +107,8 @@ To add a new command, you need to do the following:
 Check out any of the commands provided in `commands/` for some examples. It's pretty simple.
 
 To edit a message, call `message.edit(newText)` (this is async). To delete the message and send something to the user's DMs, call `message.reply(messageToSendToTheirDMs)`. If you don't want to delete the message, add a boolean as the second parameter (the value in this case would be `false` for `shouldDelete`).
+
+Further explanation might be found in any of the repositories for anything this bot requires:
+* [frozor-commands](https://github.com/ArcticZeroo/frozor-commands)
+* [frozor-slackbot](https://github.com/ArcticZeroo/frozor-slackbot)
+* [frozor-slack](https://github.com/ArcticZeroo/frozor-slack)
