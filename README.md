@@ -57,7 +57,7 @@ If a command fails for any reason (does not exist, invalid arg count, something 
 
 If a command succeeds, the original will be edited to reflect the output of that given command.
 
-Named arguments (such as those required in the attach command) currently must be formatted as `key=value`, but a frozor-commands update coming SoonTM will allow `key="value with spaces!"` and `--key value` and `--key value with spaces!`. This will probably be done tonight (4/24/17) but I'll also probably forget to update this readme.
+Named arguments (such as those required in the attach command) can be formatted as `key=value`, `key="value with spaces"`, `--key value`, `--key value with spaces`.
 
 For instance:
 ```cmd
