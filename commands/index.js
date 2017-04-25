@@ -22,6 +22,8 @@ module.exports = [
     getCommand('DisplayTime'),
     getCommand('Attachment'),
     getCommand('Space'),
+    getCommand('Status'),
+    getCommand('AnimatedStatus'),
 
     ...CopypastaCommands
 ];
