@@ -6,9 +6,9 @@ require('./lib/defs');
 
 
 const Logger = require('frozor-logger');
-const {SlackBot, ChatHandler, SlackCommandMessage, SlackMessage} = require('frozor-slackbot');
+const {SlackBot, SlackCommandMessage, SlackMessage} = require('frozor-slackbot');
 
-const {Command, CommandHandler} = require('frozor-commands');
+const {CommandHandler} = require('frozor-commands');
 
 SlackMessage.prototype.reply = function (text, shouldDelete = true, args = {}, cb) {
     if(shouldDelete){
@@ -16,6 +16,10 @@ SlackMessage.prototype.reply = function (text, shouldDelete = true, args = {}, c
     }
 
     this.bot.chat(this.user.id, text, args, cb);
+};
+
+SlackCommandMessage.prototype.prefixReply = function (text, shouldDelete, args = {}, cb) {
+    this.reply(`[*${this.commandName}*] ${text}`, shouldDelete, args, cb);
 };
 
 const commandHandler = new CommandHandler(null, {

@@ -1,5 +1,4 @@
 require('./globals');
-const log = new (require('frozor-logger'))('COMMANDS');
 
 // Return a new instance of any command given, automatically appends 'Command' if not set to false
 function getCommand(name, addCommand = true) {
@@ -26,6 +25,7 @@ module.exports = [
     getCommand('AnimatedStatus'),
     getCommand('Help'),
     getCommand('Stop'),
+    getCommand('RepeatText'),
 
     ...CopypastaCommands
 ];
