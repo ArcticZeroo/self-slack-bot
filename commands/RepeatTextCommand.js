@@ -17,7 +17,7 @@ class RepeatTextCommand extends Command{
             let count = parseInt(args.count);
 
             if(count < 1){
-                msg.prefixReply('Count must be a positive number..')
+                msg.prefixReply('Count must be a positive number.')
             }else{
                 let repeatText = '';
 
