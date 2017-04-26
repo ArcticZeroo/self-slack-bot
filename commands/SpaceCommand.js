@@ -7,3 +7,5 @@ class SpaceCommand extends Command{
         msg.edit(msg.args.join(' ').split('').join(' '));
     }
 }
+
+module.exports = SpaceCommand;
