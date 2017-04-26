@@ -19,10 +19,19 @@ class RepeatTextCommand extends Command{
             if(count < 1){
                 msg.prefixReply('Count must be a positive number.')
             }else{
-                let repeatText = '';
+                let endLength = ((args.space) ? (args.text+1)  : (args.text)) * count;
 
-                for(let i = 0; i < count; i++){
-                    repeatText += (args.space) ? ' ' + args.text : args.text;
+                if(endLength > 2999){
+                    msg.prefixReply(`Your message is too long. It must be less than *3000* characters, but yours was *${endLength}*.`);
+                    return;
+                }
+
+                let repeatText = args.text;
+
+                if(count > 1){
+                    for(let i = 1; i < count; i++){
+                        repeatText += (args.space) ? ' ' + args.text : args.text;
+                    }
                 }
 
                 msg.edit(repeatText);
