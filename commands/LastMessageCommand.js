@@ -20,7 +20,7 @@ class LastMessageCommand extends Command{
                         msg.edit(`*${user.name}* has no searchable messages.`);
                     }else{
                         const lastMessage = res.messages.matches[0];
-                        msg.edit(`*${user.name}* last sent a message at \`${new Date(lastMessage.ts * 1000).toLocaleString()}\` in *#${lastMessage.channel.name}*. He said:\`\`\`${lastMessage.text}\`\`\``);
+                        msg.edit(`*${user.name}* last sent a message at \`${new Date(lastMessage.ts * 1000).toLocaleString()}\` ${(lastMessage.channel.name.isValidSlackId()) ? 'in a private conversation.' : `in *#${lastMessage.channel.name}*. He said:\`\`\`${lastMessage.text}\`\`\``}`);
                     }
                 }
             });

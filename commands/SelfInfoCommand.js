@@ -24,7 +24,7 @@ class SelfInfoCommand extends Command{
 
         if(frecencyJumper.hasOwnProperty('')){
             let frecencyTop = frecencyJumper[''].sort((a,b)=> b.count - a.count)[0];
-            info.push(getInfoItem('Most Mentioned User', `<@${frecencyTop.id}> (${frecencyTop.count} Visits)`));
+            info.push(getInfoItem('Most Mentioned User', `<@${frecencyTop.id}> (${frecencyTop.count} Mentions)`));
         }
 
         msg.edit('', { attachments: [ { color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
