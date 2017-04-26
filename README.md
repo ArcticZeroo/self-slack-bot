@@ -64,13 +64,22 @@ For instance:
 !!attach title=hello text=world color=#2196f3
 ```
 
+or
+```cmd
+!!attach --title Hello World --text What's up --color #2196F3
+```
+
 Available commands:
+* animatestatus
+    * Animates your status. Slack updates status every 5 seconds, and mobile doesn't seem to update often. You can specify the frame time but if it's too short it'll basically be skipped. 
+    * `!!animatestatus <ANIMATION_NAME> [Optional INTERVAL in ms]`
+    * default animations are `CATS` and `WEATHER`, add more in `config/status_frames.js`
 * attach
     * This directly takes your arguments (e.g. title=hello) and converts them to a slack attachment. Use slack's attachment API to make these.
 * clap
     * Takes👏all👏your👏args👏(text)👏and👏puts👏claps👏between👏them
 * copypasta
-    * Prints a predefined copypasta. These are actually separate commands (e.g. helicopter is !!helicopter)
+    * Prints a predefined copypasta. These are actually separate commands (e.g. helicopter is `!!helicopter`)
         * helicopter
             * The "I sexually identify as an attack helicopter" thing
         * good shit
@@ -92,8 +101,19 @@ Available commands:
     * Gets self information
 * space
     * p u t s   s p a c e s  b e t w e e n   a l l   o f   y o u r   t e x t
-* status (WIP)
-    * Will set status text / emoji. Options will be specifiable in the command on whether or not it should set text, emoji, or both, and whether it should propogate across all bots set up in `tokens.js`
+    * e.g. `!!space put spaces between my text`
+* status
+    * Sets your status text / emoji. If only one is specified the other is nulled. Uses command arguments.
+    * Arguments:
+        * emoji: sets the emoji if set
+        * text: sets the text if set
+        * propogate: if true, all running slack bots will also set your status to the same thing.
+* stop
+    * exits the process. If you're running this in pm2 or another process manager, it will restart the bots.
+* repeat
+    * Repeats specified text a specified number of times. This uses command arguments. 
+    * Required arguments are text and count, and space may be used as an additional argument to add spaces between repeated text.
+        * e.g. `!!repeat --text My Text --count 10 --space true`
 * user
     * takes a username or slack mention as an argument, and returns info about them.
     
