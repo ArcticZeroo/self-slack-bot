@@ -1,9 +1,9 @@
-// Determine whether it's development, set it to a global variable
-const DEVELOPMENT = global.DEVELOPMENT =  (process.env.NODE_ENV === 'dev');
+class SpaceCommand extends Command{
+    constructor(){
+        super('space', [], 'Spacify yo text!', CommandArg.getVariableArgs(300, 'text', 'String'));
+    }
 
-// Load defs, so I can do things like Object.values if I need them anywhere in the bot.
-require('./lib/defs');
-
-
-const Logger = require('frozor-logger');
-const {SlackBot, SlackCommandMessage, SlackMessage} = requi
+    run(msg){
+        msg.edit(msg.args.join(' ').split('').join(' '));
+    }
+}

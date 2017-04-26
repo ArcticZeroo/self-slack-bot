@@ -20,7 +20,7 @@ module.exports = [
     getCommand('Ping'),
     getCommand('DisplayTime'),
     getCommand('Attachment'),
-    //getCommand('Space'),
+    getCommand('Space'),
     getCommand('Status'),
     getCommand('AnimatedStatus'),
     getCommand('Help'),
