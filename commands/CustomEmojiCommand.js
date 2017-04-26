@@ -9,7 +9,7 @@ class CustomEmojiCommand extends Command{
         bot.api.methods.emoji.list((err, res)=>{
             let emojiTopUse = Object.entries(emojiUse).filter((emoji)=> res.emoji.hasOwnProperty(emoji[0])).sort((a,b)=> b[1] - a[1])[0];
 
-            msg.edit(`This slack team has *${Object.keys(res.emoji).length}* custom emoji. ${(emojiTopUse) ? `My most used custom emoji is :${emojiTopUse}:`: 'I\'ve never used a custom emoji in this team before.'}`);
+            msg.edit(`This slack team has *${Object.keys(res.emoji).length}* custom emoji. ${(emojiTopUse) ? `My most used custom emoji is :${emojiTopUse[0]}: (*${emojiTopUse[1]}* Uses)`: 'I\'ve never used a custom emoji in this team before.'}`);
         });
     }
 }
