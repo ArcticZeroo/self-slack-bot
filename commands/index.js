@@ -29,6 +29,7 @@ module.exports = [
     getCommand('CustomEmoji'),
     getCommand('EmojiLeaderboard'),
     getCommand('TeamInfo'),
+    getCommand('BotInfo'),
 
     ...CopypastaCommands
 ];
