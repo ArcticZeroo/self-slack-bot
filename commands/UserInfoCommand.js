@@ -13,8 +13,6 @@ class UserInfoCommand extends Command{
 
             let info = [];
 
-            /*info.push('Storage.Users.' + user.name);
-            info.push('-----------');*/
             info.push(getInfoItem('ID', user.id));
             info.push(getInfoItem('Username', user.name));
 
