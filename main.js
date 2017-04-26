@@ -2,6 +2,7 @@
 const DEVELOPMENT = global.DEVELOPMENT =  (process.env.NODE_ENV === 'dev');
 
 // Load defs, so I can do things like Object.values if I need them anywhere in the bot.
+// Also provides global regex, etc
 require('./lib/defs');
 
 

@@ -26,6 +26,8 @@ module.exports = [
     getCommand('Help'),
     getCommand('Stop'),
     getCommand('RepeatText'),
+    getCommand('CustomEmoji'),
+    getCommand('EmojiLeaderboard'),
 
     ...CopypastaCommands
 ];
