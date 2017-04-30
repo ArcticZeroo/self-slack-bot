@@ -5,7 +5,7 @@ class EvalCommand extends Command{
         super('eval', ['evaluate', 'run', 'exec'], 'Evaluates JS... scary!', CommandArg.getVariableArgs(3000, 'terms', 'String'));
     }
 
-    run(msg, bot, extra) {
+    async run(msg, bot, extra) {
         const start = Date.now();
 
         const result = new Attachment().addMarkdownField('text').addMarkdownField('fields');
