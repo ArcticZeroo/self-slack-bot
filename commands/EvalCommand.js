@@ -1,3 +1,4 @@
+const now = require('performance-now');
 const { Attachment, Field } = require('frozor-slack-attachments');
 
 class EvalCommand extends Command{
@@ -6,9 +7,11 @@ class EvalCommand extends Command{
     }
 
     async run(msg, bot, extra) {
-        const start = Date.now();
+        const start = now();
 
-        const result = new Attachment().addMarkdownField('text').addMarkdownField('fields');
+        const result = new Attachment()
+            .addMarkdownField('fields')
+            .addField(new Field().setTitle('Input').setValue(`\`\`\`${msg.args.join(' ')}\`\`\``));
 
         try {
             let output = eval(msg.args.join(' '));
@@ -17,21 +20,21 @@ class EvalCommand extends Command{
                 output = output.splice(0, 2900) + ' [...]'
             }
 
-            const end = Date.now();
+            const end = now();
 
             const time = end - start;
 
             result
                 .setColor('good')
                 .addField(new Field().setTitle('Output').setValue(`\`\`\`${output}\`\`\``))
-                .addField(new Field().setTitle('Execution Time').setValue(time + ' ms'))
+                .setFooter(`Execution Time: ${time.toFixed(2)} ms`)
         } catch (e) {
             result
                 .setColor('danger')
-                .setText(`*Execution Error*: \`\`\`${e}\`\`\``);
+                .addField(new Field().setTitle('Execution Error').setValue(`\`\`\`${e}\`\`\``));
         }
 
-        msg.edit(`*Input:* \`${msg.args.join(' ')}\``, {attachments: [result]});
+        msg.edit('', {attachments: [result]});
     }
 }
 

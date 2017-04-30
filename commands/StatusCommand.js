@@ -60,7 +60,7 @@ class ChangeStatusCommand extends Command{
             setStatus(bot).catch(()=>{});
         }
 
-        msg.reply(`Your status has been set in *${(parsed.propagate) ? Object.keys(extra.slackBots).length : 1}* slack org(s)`, false);
+        msg.reply(`Your status has been set in *${(parsed.propagate) ? Object.keys(extra.slackBots).length : 1}* slack org(s)`);
     }
 }
 
