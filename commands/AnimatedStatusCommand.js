@@ -6,7 +6,7 @@ class AnimatedStatusCommand extends Command{
         super('animatestatus', ['animstatus', 'astatus'], 'Sets your animated status.', [new CommandArg('status', 'String'), new CommandArg('interval', 'Number', false)]);
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
         let parsed = CommandArg.parseCommandArgs(msg.args, this);
 
         let interval = 5000;
@@ -26,8 +26,12 @@ class AnimatedStatusCommand extends Command{
             bot.animatedStatus = null;
         }
 
-        function updateStatus(frame) {
-            bot.api.methods.users.profile.set({ profile: { status_emoji: `:${frame}:` } });
+        async function updateStatus(frame) {
+            try{
+                await bot.api.methods.users.profile.set({ profile: { status_emoji: `:${frame}:` } });
+            }catch (e){
+                log.error(`Unable to update an animated status: ${e}`);
+            }
         }
 
         bot.animatedStatus = new Animator(AnimatedStatuses[parsed.status], updateStatus, interval);

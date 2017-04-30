@@ -3,7 +3,7 @@ class RepeatTextCommand extends Command{
         super('repeat', ['r'], 'Repeats specified text n times', CommandArg.getVariableArgs(3000, 'words', 'String'));
     }
 
-    run(msg){
+    async run(msg){
         let args = CommandArg.parseArgs(msg.args);
 
         if(!args.text || !args.count){

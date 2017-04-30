@@ -3,23 +3,20 @@ class LastMessageCommand extends Command{
         super('lol', ['lolcount'], 'Gets "lol" count for a user', [new CommandArg('user', 'String')]);
     }
 
-    run(msg, bot){
+    async run(msg, bot){
         const lookup = msg.args[0];
 
-        function getLastMessage(user) {
+        async function getLastMessage(user) {
             msg.edit('Getting lol count...');
-            bot.api.methods.search.messages({
-                query: `from:${user.name} lol`,
-            }, (err,res)=>{
-                if (err) {
-                    msg.reply(`Could not get message history for *${lookup}* due to an error:\`\`\`${err}\`\`\``);
-                } else {
-                    msg.edit(`*${user.name}* has said lol \`${res.messages.total}\` time(s)`);
-                }
-            });
+
+            try {
+                let res = await bot.api.methods.search.messages({query: `from:${user.name} lol`});
+
+                msg.edit(`*${user.name}* has said lol \`${res.messages.total}\` time(s)`);
+            }catch (err){
+                msg.reply(`Could not get message history for *${lookup}* due to an error:\`\`\`${err}\`\`\``);
+            }
         }
-
-
 
         if(lookup.isValidSlackMention()){
             // It's a slack mention
@@ -28,18 +25,21 @@ class LastMessageCommand extends Command{
             if(!id){
                 msg.delete();
                 bot.chat(msg.user.id, `${lookup} doesn't appear to be a valid slack mention.`);
+                return;
             }
 
-            bot.api.storage.users.get(id, (err, user)=>{
-                if(err){
-                    msg.reply(`Couldn't get user info for ${user}: \`\`\`${err}\`\`\``);
-                }else{
-                    getLastMessage(user);
-                }
-            });
+            let user;
+
+            try{
+                user = await bot.api.storage.users(id);
+            }catch (err){
+                msg.reply(`Couldn't get user info for ${lookup}: \`\`\`${err}\`\`\``);
+            }
+
+            getLastMessage(user).catch(log.error);
         }else{
             // It's a username
-            getLastMessage({name: lookup.toLowerCase()});
+            getLastMessage({name: lookup.toLowerCase()}).catch(log.error);
         }
     }
 }

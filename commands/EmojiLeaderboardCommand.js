@@ -5,7 +5,7 @@ class CustomEmojiCommand extends Command{
         super('emoji', ['emojileaderboard']);
     }
 
-    run(msg, bot){
+    async run(msg, bot){
         const emojiUse = JSON.parse(bot.self.prefs.emoji_use);
 
         let emojiTopUse = Object.entries(emojiUse).sort((a,b)=> b[1] - a[1]).slice(0, EMOJI_COUNT);

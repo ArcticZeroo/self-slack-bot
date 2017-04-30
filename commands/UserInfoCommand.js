@@ -3,7 +3,7 @@ class UserInfoCommand extends Command{
         super('user', ['userinfo', 'users', 'uinfo'], 'Information about a specified user', [new CommandArg('user')]);
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
         const lookup = msg.args[0];
 
         function sendUserInfo(user) {
@@ -36,9 +36,7 @@ class UserInfoCommand extends Command{
                 info.push(getInfoItem('Is Bot', user.is_bot.toYesNo()));
             }
 
-            log.debug(info);
-
-            msg.edit('', { attachments: [ { color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
+            msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
         }
 
         if(lookup.isValidSlackMention()){
@@ -48,15 +46,14 @@ class UserInfoCommand extends Command{
             if(!id){
                 msg.delete();
                 bot.chat(msg.user.id, `${lookup} doesn't appear to be a valid slack mention.`);
+                return;
             }
 
-            bot.api.storage.users.get(id, (err, user)=>{
-                if(err){
-                    msg.reply(`Couldn't get user info for ${user}: \`\`\`${err}\`\`\``);
-                }else{
-                    sendUserInfo(user);
-                }
-            });
+            try{
+                sendUserInfo(await bot.api.storage.users.get(id));
+            }catch (err){
+                msg.reply(`Couldn't get user info for ${lookup}: \`\`\`${err}\`\`\``);
+            }
         }else{
             // It's a username
             let nameLookup = lookup.toLowerCase();

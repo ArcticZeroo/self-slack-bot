@@ -4,7 +4,7 @@ class DisplayTimeCommand extends Command{
     }
 
     run(msg){
-        msg.edit(`Right now, it is \`${new Date().toLocaleString()}\``);
+        msg.edit('', {attachments: [{mrkdwn_in: ['text'], color: Colors.MATERIAL_BLUE, text: `Right now, it is \`${new Date().toLocaleString()}\``}]});
     }
 }
 

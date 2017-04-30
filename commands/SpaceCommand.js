@@ -3,7 +3,7 @@ class SpaceCommand extends Command{
         super('space', [], 'Spacify yo text!', CommandArg.getVariableArgs(300, 'text', 'String'));
     }
 
-    run(msg){
+    async run(msg){
         msg.edit(msg.args.join(' ').split('').join(' '));
     }
 }

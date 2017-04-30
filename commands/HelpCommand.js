@@ -5,16 +5,15 @@ class HelpCommand extends Command{
         super('help', ['commands'], 'Lists all commands.');
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
         let response = 'Available Commands:';
 
         Object.entries(extra.commandHandler.commands)
+            .filter((entry)=> entry[1].aliases.indexOf(entry[0]) === -1 && entry[1].type === 'command')
             .map((entry)=> ({name: entry[0], command: entry[1]}) )
-            .filter((entry)=> entry.command.aliases.indexOf(entry.name) == -1 && entry.command.type == 'command')
             .sort((a, b)=> a.name.localeCompare(b.name))
             .forEach((entry)=>{
-                let command = entry.command;
-                response += `\n*${command.name}* ${(command.description) ? `- ${command.description} ` : ''}| \`${config.bot.prefix}${command.getUsageStatement()}\``;
+                response += `\n*${entry.command.name}* ${(entry.command.description) ? `- ${entry.command.description} ` : ''}| \`${config.bot.prefix}${entry.command.getUsageStatement()}\``;
             });
 
         msg.reply(response);

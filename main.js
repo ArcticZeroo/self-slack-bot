@@ -11,16 +11,16 @@ const {SlackBot, SlackCommandMessage, SlackMessage} = require('frozor-slackbot')
 
 const {CommandHandler} = require('frozor-commands');
 
-SlackMessage.prototype.reply = function (text, shouldDelete = true, args = {}, cb) {
+SlackMessage.prototype.reply = function (text, shouldDelete = true, args = {}) {
     if(shouldDelete){
         this.delete();
     }
 
-    this.bot.chat(this.user.id, text, args, cb);
+    return this.bot.chat(this.user.id, text, args);
 };
 
-SlackCommandMessage.prototype.prefixReply = function (text, shouldDelete, args = {}, cb) {
-    this.reply(`[*${this.commandName}*] ${text}`, shouldDelete, args, cb);
+SlackCommandMessage.prototype.prefixReply = function (text, shouldDelete, args = {}) {
+    return this.reply(`[*${this.commandName}*] ${text}`, shouldDelete, args);
 };
 
 const commandHandler = new CommandHandler(null, {
@@ -45,8 +45,12 @@ const commandHandler = new CommandHandler(null, {
 
 const log = global.log = new Logger();
 
+process.on('unhandledRejection', (e)=> console.log(e.stack));
+
 const config = require('./config');
 const commands = require('./commands');
+
+global.Colors = config.bot.Colors;
 
 let slackBots = {};
 let commandExtra = { commandHandler };
@@ -75,7 +79,7 @@ function registerEvents(slackBot) {
     });
 
     slackBot.on('command', (msg)=>{
-        commandHandler.process(msg, commandExtra, slackBot);
+        commandHandler.process(msg, commandExtra, slackBot).catch(log.error);
     });
 }
 

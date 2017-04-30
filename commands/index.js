@@ -5,7 +5,9 @@ function getCommand(name, addCommand = true) {
     return ( new (require(`./${name}${(addCommand) ? 'Command' : ''}`))() );
 }
 
-const CopypastaCommands = require('./CopypastaCommands');
+function getLotsOfCommands(name, addCommands = true) {
+    return (require(`./${name}${(addCommands) ? 'Commands' : ''}`));
+}
 
 module.exports = [
 
@@ -31,5 +33,5 @@ module.exports = [
     getCommand('TeamInfo'),
     getCommand('BotInfo'),
 
-    ...CopypastaCommands
+    ...getLotsOfCommands('Copypasta')
 ];

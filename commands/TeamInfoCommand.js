@@ -3,7 +3,7 @@ class UserInfoCommand extends Command{
         super('team', ['teaminfo', 'teams', 'tinfo'], 'Information about a specified team');
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
         function sendTeamInfo(team) {
             function getInfoItem(name, value) {
                 return [name, value];
@@ -16,16 +16,14 @@ class UserInfoCommand extends Command{
             info.push(getInfoItem('Domain', team.domain));
             info.push(getInfoItem('Users', Object.keys(bot.api.cache.users).length));
 
-            msg.edit('', { attachments: [ { thumb_url: team.icon.image_88, color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
+            msg.edit('', { attachments: [ { thumb_url: team.icon.image_88, color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
         }
 
-        bot.api.storage.team.get((err, team)=>{
-            if(err){
-                msg.reply(`Couldn't get team info due to an error: \`\`\`${err}\`\`\``);
-            }else{
-                sendTeamInfo(team);
-            }
-        })
+        try{
+            sendTeamInfo(await bot.api.storage.team.get());
+        }catch (err){
+            msg.reply(`Couldn't get team info due to an error: \`\`\`${err}\`\`\``);
+        }
     }
 }
 

@@ -3,7 +3,7 @@ class ClapCommand extends Command{
         super('clap', [], 'Clapify yo messages', CommandArg.getVariableArgs(3000, 'words', 'String'));
     }
 
-    run(msg){
+    async run(msg){
         msg.edit(msg.args.join(':clap:'));
     }
 }

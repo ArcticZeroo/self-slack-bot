@@ -3,7 +3,7 @@ class SelfInfoCommand extends Command{
         super('self', ['selfinfo', 'me'], 'Info about the user running the bot.');
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
         const emojiUse = JSON.parse(bot.self.prefs.emoji_use);
         const frecencyJumper = JSON.parse(bot.self.prefs.frecency_jumper);
         // Gets entries, sorts by the value, gets first item
@@ -27,7 +27,7 @@ class SelfInfoCommand extends Command{
             info.push(getInfoItem('Most Mentioned User', `<@${frecencyTop.id}> (${frecencyTop.count} Mentions)`));
         }
 
-        msg.edit('', { attachments: [ { color: '#2196F3', fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
+        msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
     }
 }
 

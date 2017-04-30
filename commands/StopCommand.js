@@ -3,8 +3,9 @@ class StopCommand extends Command{
         super('stop', ['exit', 'restart', 'reload'], 'Stop the self bot')
     }
 
-    run(msg){
-        msg.delete(()=> process.exit());
+    async run(msg){
+        await msg.delete();
+        process.exit();
     }
 }
 

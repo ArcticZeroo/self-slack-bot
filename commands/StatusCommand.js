@@ -1,9 +1,15 @@
 class ChangeStatusCommand extends Command{
     constructor(){
-        super('status', ['changestatus', 'setstatus'], 'Sets your status.', CommandArg.getVariableArgs(300, 'args', 'String'));
+        super('status', ['changestatus', 'setstatus'], 'Sets your status.', CommandArg.getVariableArgs(300, 'args', 'String', false));
     }
 
-    run(msg, bot, extra){
+    async run(msg, bot, extra){
+        if(msg.args.length === 0){
+            const me = bot.api.cache.users[bot.self.id];
+            msg.edit('', { attachments:[{title: 'My Status', text: (me.profile.status_emoji || '') + ' ' + (me.profile.status_text || ''), color: Colors.MATERIAL_BLUE}] });
+            return;
+        }
+
         let parsed = CommandArg.parseArgs(msg.args);
 
         // This will set the status to message args if no args are specified.
@@ -11,8 +17,8 @@ class ChangeStatusCommand extends Command{
             parsed.text = msg.args.join(' ');
         }
 
-        if(parsed.hasOwnProperty('propogate')){
-            parsed.propogate = parsed.propogate.toBoolean();
+        if(parsed.hasOwnProperty('propagate')){
+            parsed.propagate = parsed.propagate.toBoolean();
         }
 
         let profile = {};
@@ -35,22 +41,26 @@ class ChangeStatusCommand extends Command{
             profile.status_emoji = parsed.emoji;
         }
 
-        function setStatus(slackBot) {
-            if(slackBot.animatedStatus != null){
-                slackBot.animatedStatus.stop();
-                slackBot.animatedStatus = null;
-            }
+        async function setStatus(slackBot) {
+            try{
+                if(slackBot.animatedStatus != null){
+                    slackBot.animatedStatus.stop();
+                    slackBot.animatedStatus = null;
+                }
 
-            slackBot.api.methods.users.profile.set({ profile });
+                await slackBot.api.methods.users.profile.set({ profile });
+            }catch (e){
+                log.error(`Could not update slack status for ${log.chalk.slack(slackBot.prefix)}: ${e}`);
+            }
         }
 
-        if(parsed.propogate){
+        if(parsed.propagate){
             Object.each(extra.slackBots, setStatus);
         }else{
-            setStatus(bot);
+            setStatus(bot).catch(()=>{});
         }
 
-        msg.reply(`Your status has been set in *${(parsed.propogate) ? Object.keys(extra.slackBots).length : 1}* slack org(s)`);
+        msg.reply(`Your status has been set in *${(parsed.propagate) ? Object.keys(extra.slackBots).length : 1}* slack org(s)`, false);
     }
 }
 

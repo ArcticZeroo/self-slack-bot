@@ -3,7 +3,7 @@ class AttachmentCommand extends Command{
         super('attach', [], 'Attach a message!', CommandArg.getVariableArgs(300, 'args', 'string'));
     }
 
-    run(msg){
+    async run(msg){
         let args = CommandArg.parseArgs(msg.args);
 
         msg.edit(args.editText || '', {attachments: [args]});

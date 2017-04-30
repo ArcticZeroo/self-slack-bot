@@ -3,7 +3,7 @@ class BotInfoCommand extends Command{
         super('info', ['version', 'about']);
     }
 
-    run(msg, bot){
+    async run(msg, bot){
         msg.edit(`Slack Self Bot *v${process.env.npm_package_version}* running on SlackBot *${bot.prefix}*!`)
     }
 }
