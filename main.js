@@ -81,6 +81,11 @@ function registerEvents(slackBot) {
     slackBot.on('command', (msg)=>{
         commandHandler.process(msg, commandExtra, slackBot).catch(log.error);
     });
+
+    slackBot.api.on('rtmClose', ()=>{
+        log.info(`${log.chalk.cyan(slackBot.prefix)} disconnected from slack. Attempting to restart it...`);
+        slackBot.api.rtm.start();
+    });
 }
 
 for(let command of commands){
