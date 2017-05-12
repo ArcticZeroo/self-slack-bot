@@ -112,5 +112,6 @@ if(DEVELOPMENT){
         createBotFromPrefix(prefix);
     }
 }
+process.on('unhandledRejection', console.error);
 
 commandExtra.slackBots = slackBots;
