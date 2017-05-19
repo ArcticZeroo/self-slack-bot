@@ -3,7 +3,7 @@ class DisplayTimeCommand extends Command{
         super('time', ['mytime'], 'Sends a message with the host\'s time.');
     }
 
-    run(msg){
+    async run(msg){
         msg.edit('', {attachments: [{mrkdwn_in: ['text'], color: Colors.MATERIAL_BLUE, text: `Right now, it is \`${new Date().toLocaleString()}\``}]});
     }
 }
