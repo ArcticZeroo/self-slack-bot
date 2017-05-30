@@ -107,7 +107,7 @@ Available commands:
     * Arguments:
         * emoji: sets the emoji if set
         * text: sets the text if set
-        * propogate: if true, all running slack bots will also set your status to the same thing.
+        * propagate: if true, all running slack bots will also set your status to the same thing.
 * stop
     * exits the process. If you're running this in pm2 or another process manager, it will restart the bots.
 * repeat
