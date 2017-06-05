@@ -40,7 +40,8 @@ const commandHandler = new CommandHandler(null, {
     minargs: (msg, cmd, bot)=>`Not enough arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
     maxargs: (msg, cmd, bot)=> `Too many arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
     error: (msg, cmd, bot, e)=> `Ran into an error while running *${cmd.name}*: \`\`\`${e}\`\`\``,
-    nocommand: (msg, bot)=> `You tried to run *${msg.commandName}*, but that command doesn't exist.`
+    // If the user just types !!, don't actually do anything
+    nocommand: (msg, bot)=> (msg.commandName.trim() === '') ? false : `You tried to run *${msg.commandName}*, but that command doesn't exist.`
 });
 
 const log = global.log = new Logger();
