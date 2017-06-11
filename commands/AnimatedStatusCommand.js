@@ -16,6 +16,11 @@ class AnimatedStatusCommand extends Command{
 
         parsed.status = parsed.status.toUpperCase();
 
+        if (parsed.status === 'stop') {
+            bot.animatedStatus.stop();
+            return msg.reply(`Your animated status has stopped.`);
+        }
+
         if(!AnimatedStatuses.hasOwnProperty(parsed.status)){
             msg.reply('That animated status does not exist!');
             return;
