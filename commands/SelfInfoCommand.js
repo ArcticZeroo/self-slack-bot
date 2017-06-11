@@ -22,7 +22,7 @@ class SelfInfoCommand extends Command{
         info.push(getInfoItem('Top Emoji', `:${emojiTopUse[0]}: (${emojiTopUse[1]} Uses)`));
         info.push(getInfoItem('Emoji Type', bot.self.prefs.emoji_mode));
 
-        if(frecencyJumper.hasOwnProperty('')){
+        if(frecencyJumper.hasOwnProperty('') && Array.isArray(frecencyJumper[''])){
             let frecencyTop = frecencyJumper[''].sort((a,b)=> b.count - a.count)[0];
             info.push(getInfoItem('Most Mentioned User', `<@${frecencyTop.id}> (${frecencyTop.count} Mentions)`));
         }
