@@ -1,6 +1,11 @@
-class LastMessageCommand extends Command{
+class LastMessageCommand extends frozor.Command{
     constructor(){
-        super('lol', ['lolcount'], 'Gets "lol" count for a user', [new CommandArg('user', 'String')]);
+        super({
+            name: 'lol',
+            aliases: ['lolcount'],
+            description: 'Gets "lol" count for a user',
+            args: [new frozor.CommandArg('user', 'String')]
+        });
     }
 
     async run(msg, bot){

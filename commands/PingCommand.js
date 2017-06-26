@@ -1,6 +1,10 @@
-class PingCommand extends Command{
+class PingCommand extends frozor.Command{
     constructor(){
-        super('ping', ['speedtest'], 'Gets ping to slack/bot');
+        super({
+            name: 'ping',
+            aliases: ['speedtest'],
+            description: 'Gets ping to slack/bot'
+        });
     }
 
     async run(msg){

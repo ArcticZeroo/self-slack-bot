@@ -1,10 +1,14 @@
-class ClapCommand extends Command{
+class ClapCommand extends frozor.Command{
     constructor(){
-        super('clap', [], 'Clapify yo messages', CommandArg.getVariableArgs(3000, 'words', 'String'));
+        super({
+            name: 'clap',
+            description: 'Clapify yo messages',
+            args: frozor.CommandArg.getVariableArgs(3000, 'words', 'String')
+        });
     }
 
     async run(msg){
-        msg.edit(msg.args.join(':clap:'));
+        return msg.edit(msg.args.join(':clap:'));
     }
 }
 

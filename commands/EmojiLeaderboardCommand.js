@@ -1,8 +1,11 @@
 const EMOJI_COUNT = 15;
 
-class CustomEmojiCommand extends Command{
+class CustomEmojiCommand extends frozor.Command{
     constructor(){
-        super('emoji', ['emojileaderboard']);
+        super({
+            name: 'emoji',
+            aliases: ['emojileaderboard', 'myemoji', 'emojiuse']
+        });
     }
 
     async run(msg, bot){

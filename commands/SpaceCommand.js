@@ -1,6 +1,10 @@
-class SpaceCommand extends Command{
+class SpaceCommand extends frozor.Command{
     constructor(){
-        super('space', [], 'Spacify yo text!', CommandArg.getVariableArgs(300, 'text', 'String'));
+        super({
+            name: 'space',
+            description: 'Spacify yo text!',
+            args: frozor.CommandArg.getVariableArgs(300, 'text', 'String')
+        });
     }
 
     async run(msg){

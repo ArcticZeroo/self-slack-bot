@@ -1,6 +1,10 @@
-class StopCommand extends Command{
+class StopCommand extends frozor.Command{
     constructor(){
-        super('stop', ['exit', 'restart', 'reload'], 'Stop the self bot')
+        super({
+            name: 'stop',
+            aliases: ['exit', 'restart', 'reload'],
+            description: 'Stop the self bot'
+        })
     }
 
     async run(msg){

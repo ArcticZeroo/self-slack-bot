@@ -1,10 +1,13 @@
-class BotInfoCommand extends Command{
+class BotInfoCommand extends frozor.Command{
     constructor(){
-        super('info', ['version', 'about']);
+        super({
+            name: 'info',
+            aliases: ['version', 'about']
+        });
     }
 
     async run(msg, bot){
-        msg.edit(`Slack Self Bot *v${process.env.npm_package_version}* running on SlackBot *${bot.prefix}*!`)
+        return msg.edit(`Slack Self Bot *v${process.env.npm_package_version}* by *ArcticZeroo* running on SlackBot *${bot.prefix}*!`);
     }
 }
 

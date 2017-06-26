@@ -1,12 +1,16 @@
-class AttachmentCommand extends Command{
+class AttachmentCommand extends frozor.Command{
     constructor(){
-        super('attach', [], 'Attach a message!', CommandArg.getVariableArgs(300, 'args', 'string'));
+        super({
+            name: 'attach',
+            description: 'Attach a message!',
+            args: frozor.CommandArg.getVariableArgs(300, 'args', 'string')
+        });
     }
 
     async run(msg){
-        let args = CommandArg.parseArgs(msg.args);
+        let args = frozor.CommandArg.parseArgs(msg.args);
 
-        msg.edit(args.editText || '', {attachments: [args]});
+        return msg.edit(args.editText || '', {attachments: [args]});
     }
 }
 

@@ -5,14 +5,9 @@ function getCommand(name, addCommand = true) {
     return ( new (require(`./${name}${(addCommand) ? 'Command' : ''}`))() );
 }
 
-function getLotsOfCommands(name, addCommands = true) {
-    return (require(`./${name}${(addCommands) ? 'Commands' : ''}`));
-}
-
 module.exports = [
 
     // Regular Commands
-
     getCommand('Eval'),
     getCommand('SelfInfo'),
     getCommand('UserInfo'),
@@ -33,5 +28,5 @@ module.exports = [
     getCommand('TeamInfo'),
     getCommand('BotInfo'),
 
-    ...getLotsOfCommands('Copypasta')
+    ...getCommand('CopypastaCommands', false)
 ];

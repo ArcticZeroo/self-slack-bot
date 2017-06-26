@@ -9,7 +9,7 @@
   "author": "ArcticZeroo",
   "license": "ISC",
   "dependencies": {
-    "frozor-commands": "^3.0.x",
+    "frozor-commands": "^3.2.x",
     "frozor-logger": "^3.0.x",
     "frozor-slack-attachments": "^1.0.x",
     "frozor-slackbot": "^4.0.x"

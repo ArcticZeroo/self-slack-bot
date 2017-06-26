@@ -1,6 +1,11 @@
-class UserInfoCommand extends Command{
+class UserInfoCommand extends frozor.Command{
     constructor(){
-        super('user', ['userinfo', 'users', 'uinfo'], 'Information about a specified user', [new CommandArg('user')]);
+        super({
+            name: 'user',
+            aliases: ['userinfo', 'users', 'uinfo'],
+            description: 'Information about a specified user',
+            args: ['user']
+        });
     }
 
     async run(msg, bot, extra){

@@ -1,10 +1,15 @@
-class RepeatTextCommand extends Command{
+class RepeatTextCommand extends frozor.Command{
     constructor(){
-        super('repeat', ['r'], 'Repeats specified text n times', CommandArg.getVariableArgs(3000, 'words', 'String'));
+        super({
+            name: 'repeat',
+            aliases: ['r'],
+            description: 'Repeats specified text n times',
+            args: frozor.CommandArg.getVariableArgs(3000, 'words', 'String')
+        });
     }
 
     async run(msg){
-        let args = CommandArg.parseArgs(msg.args);
+        let args = frozor.CommandArg.parseArgs(msg.args);
 
         if(!args.text || !args.count){
             msg.prefixReply('Text and count must both be specified.');

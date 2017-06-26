@@ -1,6 +1,11 @@
-class ChangeStatusCommand extends Command{
+class ChangeStatusCommand extends frozor.Command{
     constructor(){
-        super('status', ['changestatus', 'setstatus'], 'Sets your status.', CommandArg.getVariableArgs(300, 'args', 'String', false));
+        super({
+            name: 'status',
+            aliases: ['changestatus', 'setstatus'],
+            description: 'Sets your status.',
+            args: frozor.CommandArg.getVariableArgs(300, 'args', 'String', false)
+        });
     }
 
     async run(msg, bot, extra){
@@ -10,7 +15,7 @@ class ChangeStatusCommand extends Command{
             return;
         }
 
-        let parsed = CommandArg.parseArgs(msg.args);
+        let parsed = frozor.CommandArg.parseArgs(msg.args);
 
         // This will set the status to message args if no args are specified.
         if(!parsed.hasOwnProperty('text') && !parsed.hasOwnProperty('emoji')){

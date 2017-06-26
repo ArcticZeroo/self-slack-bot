@@ -1,6 +1,10 @@
-class SelfInfoCommand extends Command{
+class SelfInfoCommand extends frozor.Command{
     constructor(){
-        super('self', ['selfinfo', 'me'], 'Info about the user running the bot.');
+        super({
+            name: 'self',
+            aliases: ['selfinfo', 'me'],
+            description: 'Info about the user running the bot.'
+        });
     }
 
     async run(msg, bot, extra){
@@ -22,12 +26,12 @@ class SelfInfoCommand extends Command{
         info.push(getInfoItem('Top Emoji', `:${emojiTopUse[0]}: (${emojiTopUse[1]} Uses)`));
         info.push(getInfoItem('Emoji Type', bot.self.prefs.emoji_mode));
 
-        if(frecencyJumper.hasOwnProperty('') && Array.isArray(frecencyJumper[''])){
+        if(frecencyJumper[''] && Array.isArray(frecencyJumper[''])){
             let frecencyTop = frecencyJumper[''].sort((a,b)=> b.count - a.count)[0];
             info.push(getInfoItem('Most Mentioned User', `<@${frecencyTop.id}> (${frecencyTop.count} Mentions)`));
         }
 
-        msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
+        return msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
     }
 }
 

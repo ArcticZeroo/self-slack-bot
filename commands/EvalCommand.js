@@ -1,9 +1,14 @@
 const now = require('performance-now');
 const { Attachment, Field } = require('frozor-slack-attachments');
 
-class EvalCommand extends Command{
+class EvalCommand extends frozor.Command{
     constructor(){
-        super('eval', ['evaluate', 'run', 'exec'], 'Evaluates JS... scary!', CommandArg.getVariableArgs(3000, 'terms', 'String'));
+        super({
+            name: 'eval',
+            aliases: ['run', 'evaluate', 'js', 'exec'],
+            description: 'Evaluates JS... scary!',
+            args: frozor.CommandArg.getVariableArgs(3000, 'terms', 'String')
+        });
     }
 
     async run(msg, bot, extra) {

@@ -1,8 +1,12 @@
 const config = require('../config');
 
-class HelpCommand extends Command{
+class HelpCommand extends frozor.Command{
     constructor(){
-        super('help', ['commands'], 'Lists all commands.');
+        super({
+            name: 'help',
+            aliases: ['commands'],
+            description: 'Lists all commands.'
+        });
     }
 
     async run(msg, bot, extra){

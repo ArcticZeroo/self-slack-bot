@@ -1,5 +1,9 @@
 const {Command, CommandArg} = require('frozor-commands');
 
+if (!global.frozor) {
+    global.frozor = {};
+}
 
-global.Command = Command;
-global.CommandArg = CommandArg;
+
+frozor.Command = Command;
+frozor.CommandArg = CommandArg;

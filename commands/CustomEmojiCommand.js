@@ -1,6 +1,9 @@
-class CustomEmojiCommand extends Command{
+class CustomEmojiCommand extends frozor.Command{
     constructor(){
-        super('customemoji', ['cemoji']);
+        super({
+            name: 'customemoji',
+            aliases: ['emoji']
+        });
     }
 
     async run(msg, bot){
@@ -11,9 +14,9 @@ class CustomEmojiCommand extends Command{
 
             let emojiTopUse = Object.entries(emojiUse).filter((emoji)=> res.emoji.hasOwnProperty(emoji[0])).sort((a,b)=> b[1] - a[1])[0];
 
-            msg.edit(`This slack team has *${Object.keys(res.emoji).length}* custom emoji. ${(emojiTopUse) ? `My most used custom emoji is :${emojiTopUse[0]}: (*${emojiTopUse[1]}* Uses)`: 'I\'ve never used a custom emoji in this team before.'}`);
+            return msg.edit(`This slack team has *${Object.keys(res.emoji).length}* custom emoji. ${(emojiTopUse) ? `My most used custom emoji is :${emojiTopUse[0]}: (*${emojiTopUse[1]}* Uses)`: 'I\'ve never used a custom emoji in this team before.'}`);
         }catch (e){
-            msg.reply(`Unable to get emoji list due to error: \`\`\`${e}\`\`\``)
+            return msg.reply(`Unable to get emoji list due to error: \`\`\`${e}\`\`\``)
         }
     }
 }
