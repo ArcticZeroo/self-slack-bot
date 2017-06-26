@@ -92,6 +92,7 @@ function registerEvents(slackBot) {
 }
 
 for(let command of commands){
+    log.debug(`Registering command ${log.chalk.cyan(command.name)}`);
     commandHandler.register(command);
 }
 

@@ -21,8 +21,9 @@ const copypastas = [
     ['lenny', '( ͡° ͜ʖ ͡°)'],
     ['donger', 'ヽ༼ຈل͜ຈ༽ﾉ', ['raiseit']],
     ['tableflip', '(╯°□°）╯︵ ┻━┻'],
+    //TODO: Make these two use slack's expand method to expand it
     ['googleit', 'https://i.imgur.com/X20kba7.gif'],
     ['bloodyhell', 'https://media.giphy.com/media/5yLgocEzAWWo8zFkq08/giphy.gif']
 ];
 
-module.exports = copypastas.map(getCopypastaCommand);
+module.exports = copypastas.map((a)=> getCopypastaCommand.apply(null, a));
