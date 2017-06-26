@@ -23,25 +23,27 @@ SlackCommandMessage.prototype.prefixReply = function (text, shouldDelete, args =
     return this.reply(`[*${this.commandName}*] ${text}`, shouldDelete, args);
 };
 
-const commandHandler = new CommandHandler(null, {
-    logger: function (msg, cmd, bot, success) {
-        bot.api.storage.users.get(msg.user.id, (err, user)=>{
-            if(!user){
-                user = {name: 'Unknown', id: 'Unknown'}
-            }
+const commandHandler = new CommandHandler({
+    formatter: {
+        logger: function (msg, cmd, bot, success) {
+            bot.api.storage.users.get(msg.user.id, (err, user)=>{
+                if(!user){
+                    user = {name: 'Unknown', id: 'Unknown'}
+                }
 
-            let name = `${log.chalk.cyan(user.name)}${log.chalk.white('@')}${log.chalk.magenta(user.id)}`;
+                let name = `${log.chalk.cyan(user.name)}${log.chalk.white('@')}${log.chalk.magenta(user.id)}`;
 
-            bot.log.command(name + ' (Self)', cmd.name, `Slack (${bot.prefix})`, success);
-        });
+                bot.log.command(name + ' (Self)', cmd.name, `Slack (${bot.prefix})`, success);
+            });
 
-        return false;
-    },
-    minargs: (msg, cmd, bot)=>`Not enough arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
-    maxargs: (msg, cmd, bot)=> `Too many arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
-    error: (msg, cmd, bot, e)=> `Ran into an error while running *${cmd.name}*: \`\`\`${e}\`\`\``,
-    // If the user just types !!, don't actually do anything
-    nocommand: (msg, bot)=> (msg.commandName.trim() === '' || msg.commandName.split('').count('!') === msg.commandName.length) ? false : `You tried to run *${msg.commandName}*, but that command doesn't exist.`
+            return false;
+        },
+        minargs: (msg, cmd, bot)=>`Not enough arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
+        maxargs: (msg, cmd, bot)=> `Too many arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
+        error: (msg, cmd, bot, e)=> `Ran into an error while running *${cmd.name}*: \`\`\`${e}\`\`\``,
+        // If the user just types !!, don't actually do anything
+        nocommand: (msg, bot)=> (msg.commandName.trim() === '' || msg.commandName.split('').count('!') === msg.commandName.length) ? false : `You tried to run *${msg.commandName}*, but that command doesn't exist.`
+    }
 });
 
 const log = global.log = new Logger();
