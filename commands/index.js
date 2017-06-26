@@ -28,5 +28,5 @@ module.exports = [
     getCommand('TeamInfo'),
     getCommand('BotInfo'),
 
-    ...getCommand('CopypastaCommands', false)
+    ...require('./CopypastaCommands')
 ];
