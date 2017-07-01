@@ -13,7 +13,7 @@ function getImagePostCommand(name, image, text, aliases = []) {
         async run(msg, bot){
             return msg
                 // Edit the message to have the URL, for those who can't or won't unfurl
-                .edit(this.text)
+                .edit(this.image)
                 // Then, return the Promise for unfurling the same image, so that it'll be caught by the same 'catch'
                 .then(r => bot.api.methods.chat.unfurl({channel: msg.channel, ts: msg.ts, unfurls: { [this.image]: {text} }}))
                 // Finally, call msg.error if something goes wrong. I think that exists.
