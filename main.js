@@ -23,6 +23,10 @@ SlackCommandMessage.prototype.prefixReply = function (text, shouldDelete, args =
     return this.reply(`[*${this.commandName}*] ${text}`, shouldDelete, args);
 };
 
+SlackCommandMessage.prototype.error = function (text, shouldDelete, args) {
+    return this.prefixReply(`Error: ${text}`, shouldDelete, args);
+};
+
 const commandHandler = new CommandHandler({
     formatter: {
         logger: function (msg, cmd, bot, success) {
