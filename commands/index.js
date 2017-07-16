@@ -29,5 +29,4 @@ module.exports = [
     getCommand('BotInfo'),
 
     ...require('./CopypastaCommands'),
-    ...require('./ImagePostCommands')
 ];
