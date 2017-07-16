@@ -64,7 +64,7 @@ let commandExtra = { commandHandler };
 
 function registerEvents(slackBot) {
     slackBot.api.once('message', (msg)=>{
-        log.debug(`Setting first event on bot ${log.chalk.cyan(slackBot.prefix)}`);
+        log.debug(`Setting first message event on bot ${log.chalk.cyan(slackBot.prefix)}`);
         slackBot.firstEvent = msg.ts;
     });
 
@@ -92,6 +92,11 @@ function registerEvents(slackBot) {
     slackBot.api.on('rtmClose', ()=>{
         log.info(`${log.chalk.cyan(slackBot.prefix)} disconnected from slack. Attempting to restart it...`);
         slackBot.api.rtm.start();
+    });
+
+    // Update preferences as they change
+    slackBot.api.on('pref_change', (e)=>{
+        slackBot.self.prefs[e.name] = e.value;
     });
 }
 
