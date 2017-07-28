@@ -22,7 +22,7 @@ class EvalCommand extends frozor.Command{
             let output = eval(msg.args.join(' '));
 
             if (output.length > 2900) {
-                output = output.splice(0, 2900) + ' [...]'
+                output = output.slice(0, 2900) + ' [...]'
             }
 
             const end = now();
