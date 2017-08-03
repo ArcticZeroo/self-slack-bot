@@ -29,15 +29,19 @@ class UserInfoCommand extends frozor.Command{
                 info.push(getInfoItem('Status', (user.profile.status_emoji || '') + ' ' + (user.profile.status_text || '')))
             }
 
-            if(user.is_restricted){
+            if(user.has_2fa != null) {
+                info.push(getInfoItem('Has 2FA', user.has_2fa.toYesNo()));
+            }
+
+            if(user.is_restricted) {
                 info.push(getInfoItem('Is Restricted', user.is_restricted.toYesNo()));
             }
 
-            if(user.is_admin){
+            if(user.is_admin) {
                 info.push(getInfoItem('Is Admin', user.is_admin.toYesNo()));
             }
 
-            if(user.is_bot){
+            if(user.is_bot) {
                 info.push(getInfoItem('Is Bot', user.is_bot.toYesNo()));
             }
 
