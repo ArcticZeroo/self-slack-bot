@@ -9,7 +9,13 @@ class RepeatTextCommand extends frozor.Command{
     }
 
     async run(msg){
-        let args = frozor.CommandArg.parseArgs(msg.args);
+        const args = frozor.CommandArg.parseArgs(msg.args);
+
+        if (!args.text && !args.count) {
+            args.count = msg.args[0];
+            args.text = msg.args.slice(1).join(' ');
+            args.space = true;
+        }
 
         if(!args.text || !args.count){
             msg.prefixReply('Text and count must both be specified.');
