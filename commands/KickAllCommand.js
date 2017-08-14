@@ -40,7 +40,7 @@ class KickAllCommand extends frozor.Command {
             try {
                 await bot.api.methods[`${type}s`].kick({channel, user});
             } catch (e) {
-                return msg.reply(`I wasn\'t able to kick *${userData.username}*, sorry. Try again later?`);
+                return msg.reply(`I wasn\'t able to kick *${userData.name}*, sorry. Try again later?`);
             }
         }
 
