@@ -33,7 +33,7 @@ class KickAllCommand extends frozor.Command {
 
             const userData = bot.api.cache.users[user];
 
-            if (userData.is_admin) {
+            if (userData.deleted || userData.is_admin) {
                 continue;
             }
 
