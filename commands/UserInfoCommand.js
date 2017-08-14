@@ -29,6 +29,10 @@ class UserInfoCommand extends frozor.Command{
                 info.push(getInfoItem('Status', (user.profile.status_emoji || '') + ' ' + (user.profile.status_text || '')))
             }
 
+            if(user.deleted) {
+                info.push(getInfoItem('Disabled', 'Yes'));
+            }
+
             if(user.has_2fa != null) {
                 info.push(getInfoItem('Has 2FA', user.has_2fa.toYesNo()));
             }
