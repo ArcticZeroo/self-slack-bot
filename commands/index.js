@@ -27,6 +27,7 @@ module.exports = [
     getCommand('EmojiLeaderboard'),
     getCommand('TeamInfo'),
     getCommand('BotInfo'),
+    getCommand('KickAll'),
 
     ...require('./CopypastaCommands'),
 ];
