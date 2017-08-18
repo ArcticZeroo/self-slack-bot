@@ -44,7 +44,7 @@ const commandHandler = new CommandHandler({
         },
         minargs: (msg, cmd, bot)=>`Not enough arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
         maxargs: (msg, cmd, bot)=> `Too many arguments to run *${cmd.name}*! Usage: \`${cmd.getUsageStatement()}\``,
-        error: (msg, cmd, bot, e)=> {
+        error: (msg, cmd, bot, extra, e)=> {
             console.error(`Ran into an error while running ${cmd.name}`);
             console.error(e);
 
