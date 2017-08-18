@@ -28,6 +28,7 @@ module.exports = [
     getCommand('TeamInfo'),
     getCommand('BotInfo'),
     getCommand('KickAll'),
+    getCommand('IsDown'),
 
     ...require('./CopypastaCommands'),
 ];

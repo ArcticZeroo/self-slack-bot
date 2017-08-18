@@ -9,9 +9,11 @@
   "author": "ArcticZeroo",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "frozor-commands": "^3.2.x",
     "frozor-logger": "^3.0.x",
     "frozor-slack-attachments": "^1.0.x",
-    "frozor-slackbot": "^4.0.x"
+    "frozor-slackbot": "^4.0.x",
+    "snekfetch": "^3.2.9"
   }
 }
