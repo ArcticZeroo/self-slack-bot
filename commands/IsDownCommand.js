@@ -33,7 +33,9 @@ class IsDownCommand extends frozor.Command {
 
         const $ = cheerio.load(res.text);
 
-        if (this.isDown($('#content p').html())) {
+        const text = $('#content p').html();
+
+        if (this.isDown(text)) {
             return msg.edit(`It's not just me, *${site}* seems to be down!`);
         } else {
             return msg.edit(`It's just me, *${site}* doesn't seem to be down.`);
