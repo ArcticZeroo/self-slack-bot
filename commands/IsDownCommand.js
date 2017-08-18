@@ -37,9 +37,9 @@ class IsDownCommand extends frozor.Command {
         const text = $('#content p').html().replace(/[\r\n]/, '');
 
         if (this.isDown(text)) {
-            return msg.reply(`It's not just you, *${site}* seems to be down!`);
+            return msg.reply(`It's not just me, *${site}* seems to be down!`, false);
         } else {
-            return msg.reply(`It's just you, *${site}* doesn't seem to be down.`);
+            return msg.reply(`It's just me, *${site}* doesn't seem to be down.`, false);
         }
     }
 }
