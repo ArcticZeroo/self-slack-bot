@@ -13,7 +13,7 @@ class IsDownCommand extends frozor.Command {
     }
 
     isDown(text) {
-        const match = (/it's (not )?just you/i).exec(text);
+        const match = (/it&apos;s (not )?just you/i).exec(text);
 
         return !!(match[1]);
     }
@@ -34,12 +34,12 @@ class IsDownCommand extends frozor.Command {
 
         const $ = cheerio.load(res.text);
 
-        const text = $('#content p').html().replace(/[\r\n]/, '');
+        const text = $('#content p').html();
 
         if (this.isDown(text)) {
-            return msg.reply(`It's not just me, *${site}* seems to be down!`, false);
+            return msg.edit(`It's not just me, *${site}* seems to be down!`);
         } else {
-            return msg.reply(`It's just me, *${site}* doesn't seem to be down.`, false);
+            return msg.edit(`It's just me, *${site}* doesn't seem to be down.`);
         }
     }
 }
