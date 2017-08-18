@@ -2,6 +2,7 @@ const snekfetch = require('snekfetch');
 const cheerio = require('cheerio');
 
 const SITE_MATCH = /<.*\|(.*)>/;
+const DOWN_MATCH = /it&apos;s (not )?just you/i;
 
 class IsDownCommand extends frozor.Command {
     constructor() {
@@ -13,9 +14,7 @@ class IsDownCommand extends frozor.Command {
     }
 
     isDown(text) {
-        const match = (/it&apos;s (not )?just you/i).exec(text);
-
-        return !!(match[1]);
+        return !!(DOWN_MATCH.exec(text)[1]);
     }
 
     async run(msg) {
@@ -34,9 +33,7 @@ class IsDownCommand extends frozor.Command {
 
         const $ = cheerio.load(res.text);
 
-        const text = $('#content p').html();
-
-        if (this.isDown(text)) {
+        if (this.isDown($('#content p').html())) {
             return msg.edit(`It's not just me, *${site}* seems to be down!`);
         } else {
             return msg.edit(`It's just me, *${site}* doesn't seem to be down.`);
