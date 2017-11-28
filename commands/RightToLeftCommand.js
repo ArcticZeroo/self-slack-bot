@@ -9,7 +9,7 @@ class RightToLeftCommand extends frozor.Command {
     }
 
     async run(msg, bot) {
-        return msg.edit('\u202E' + msg.args.slice(1).join(' '));
+        return msg.edit('\u202E' + msg.args.join(' '));
     }
 }
 
