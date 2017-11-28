@@ -30,6 +30,7 @@ module.exports = [
     getCommand('KickAll'),
     getCommand('IsDown'),
     getCommand('RightToLeft'),
+    getCommand('BlankMessage'),
 
     ...require('./CopypastaCommands'),
 ];
