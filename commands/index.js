@@ -29,6 +29,7 @@ module.exports = [
     getCommand('BotInfo'),
     getCommand('KickAll'),
     getCommand('IsDown'),
+    getCommand('RightToLeft'),
 
     ...require('./CopypastaCommands'),
 ];
