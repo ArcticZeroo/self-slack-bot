@@ -31,6 +31,7 @@ module.exports = [
     getCommand('IsDown'),
     getCommand('RightToLeft'),
     getCommand('BlankMessage'),
+    getCommand('KnowYourMeme'),
 
     ...require('./CopypastaCommands'),
 ];

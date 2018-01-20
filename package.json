@@ -14,6 +14,7 @@
     "frozor-logger": "^3.0.x",
     "frozor-slack-attachments": "^1.0.x",
     "frozor-slackbot": "^4.0.x",
+    "nodeyourmeme": "^1.0.0",
     "snekfetch": "^3.2.9"
   }
 }
