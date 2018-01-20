@@ -15,7 +15,7 @@ class KnowYourMemeCommand extends frozor.Command {
     }
 
     async run(msg) {
-        msg.edit('', { attachments: [{ color: '#FF9800', text: 'Searching for meme info...' }] });
+        msg.edit('', { attachments: [{ color: '#FF9800', text: `Retrieving meme info...` }] });
 
         const searchTerm = msg.args.join(' ').toLowerCase();
 
@@ -30,10 +30,16 @@ class KnowYourMemeCommand extends frozor.Command {
         try {
             info = await promise;
         } catch (e) {
+            console.error(e);
             return msg.reply('Could not retrieve meme data, please try again later.');
         }
 
-        return msg.edit('', { attachments: [{ color: '#2196F3', text: info, title: searchTerm }] });
+        return msg.edit('', { attachments: [{
+            color: '#2196F3',
+            text: info,
+            title: searchTerm.split(' ').map(s => s[0].toUpperCase() + s.slice(1)).join(' '),
+            footer: 'Know Your Meme'
+        }] });
     }
 }
 
