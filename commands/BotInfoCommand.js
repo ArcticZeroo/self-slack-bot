@@ -9,7 +9,11 @@ class BotInfoCommand extends frozor.Command{
     }
 
     async run(msg, bot){
-        return msg.edit(`Slack Self Bot *v${pkg.version}* by *ArcticZeroo* running on SlackBot *${bot.prefix}*!`);
+        return msg.edit('', {attachments: [{
+            title: 'Bot Info',
+            text: `Slack Self Bot *v${pkg.version}* by *ArcticZeroo* running in slack workspace *${bot.prefix}*!`,
+            color: '#2196F3'
+        }]});
     }
 }
 
