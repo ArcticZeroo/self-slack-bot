@@ -9,7 +9,8 @@ class IsDownCommand extends frozor.Command {
         super({
             name: 'isup',
             aliases: ['isdown', 'downforeveryone'],
-            args: [new frozor.CommandArg('Website', 'String')]
+            args: [new frozor.CommandArg('Website', 'String')],
+            description: 'Check whether a website is down or not'
         });
     }
 

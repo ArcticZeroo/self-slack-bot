@@ -1,7 +1,8 @@
 class KickAllCommand extends frozor.Command {
     constructor() {
         super({
-            name: 'kickall'
+            name: 'kickall',
+            description: 'Kicks all users in the current channel. You must have permission, and you can\'t kick admins.'
         });
     }
 
