@@ -68,9 +68,9 @@ let slackBots = {};
 let commandExtra = { commandHandler };
 
 function registerEvents(slackBot) {
-    slackBot.api.once('message', (msg)=>{
-        log.debug(`Setting first message event on bot ${log.chalk.cyan(slackBot.prefix)}`);
-        slackBot.firstEvent = msg.ts;
+    slackBot.api.once('event', ()=>{
+        log.debug(`Setting first event on bot ${log.chalk.cyan(slackBot.prefix)}`);
+        slackBot.firstEvent = Date.now() / 1000;
     });
 
     slackBot.api.on('message', (msg)=>{
