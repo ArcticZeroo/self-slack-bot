@@ -49,33 +49,35 @@ class UserInfoCommand extends frozor.Command{
                 info.push(getInfoItem('Is Bot', user.is_bot.toYesNo()));
             }
 
-            msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] })
+            return msg.edit('', { attachments: [ { color: Colors.MATERIAL_BLUE, fields: info.map((info)=> ({ title: info[0], value: info[1], short: true })) } ] });
         }
 
-        if(lookup.isValidSlackMention()){
+        if (lookup.isValidSlackMention()) {
             // It's a slack mention
             const id = lookup.getSlackIdFromMention();
 
-            if(!id){
+            if (!id) {
                 msg.delete();
                 bot.chat(msg.user.id, `${lookup} doesn't appear to be a valid slack mention.`);
                 return;
             }
 
-            try{
-                sendUserInfo(await bot.api.storage.users.get(id));
-            }catch (err){
+            try {
+                const user = await bot.api.storage.users.get(id);
+
+                return sendUserInfo(user);
+            } catch (err) {
                 msg.reply(`Couldn't get user info for ${lookup}: \`\`\`${err}\`\`\``);
             }
-        }else{
+        } else {
             // It's a username
-            let nameLookup = lookup.toLowerCase();
+            const nameLookup = lookup.toLowerCase();
             const user = bot.api.storage.users.findInCache((u)=> u.name === nameLookup);
 
-            if(!user){
+            if (!user) {
                 msg.reply(`Couldn't find *${nameLookup}* in cache.`);
-            }else{
-                sendUserInfo(user);
+            } else {
+                return sendUserInfo(user);
             }
         }
     }
