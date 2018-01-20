@@ -4,6 +4,7 @@ class KnowYourMemeCommand extends frozor.Command {
     constructor() {
         super({
             name: 'knowyourmeme',
+            description: 'Search information about a meme',
             aliases: ['kym', 'meme'],
             args: [{
                 name: 'Search Term',
