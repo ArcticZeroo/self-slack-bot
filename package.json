@@ -10,11 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "frozor-commands": "^4.0.12",
+    "frozor-commands": "^5.0.3",
     "frozor-logger": "^3.0.x",
     "frozor-slack-attachments": "^1.0.x",
     "frozor-slackbot": "^4.0.x",
     "nodeyourmeme": "^1.0.2",
-    "snekfetch": "^3.2.9"
+    "snekfetch": "^3.6.4"
   }
 }
