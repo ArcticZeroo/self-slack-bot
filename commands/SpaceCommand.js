@@ -2,9 +2,11 @@ class SpaceCommand extends frozor.Command{
     constructor(){
         super({
             name: 'space',
-            description: 'Spacify yo text!',
-            args: frozor.CommandArg.getVariableArgs(300, 'text', 'String')
+            description: 'Spacify yo text!'
         });
+
+        this.addInfiniteArgs('words');
+        this.minArgs = 1;
     }
 
     async run(msg){

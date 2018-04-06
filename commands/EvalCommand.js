@@ -6,9 +6,11 @@ class EvalCommand extends frozor.Command{
         super({
             name: 'eval',
             aliases: ['run', 'evaluate', 'js', 'exec'],
-            description: 'Evaluates JS... scary!',
-            args: frozor.CommandArg.getVariableArgs(3000, 'terms', 'String')
+            description: 'Evaluates JS... scary!'
         });
+
+        this.addInfiniteArgs('terms');
+        this.minArgs = 1;
     }
 
     async run(msg, bot, extra) {

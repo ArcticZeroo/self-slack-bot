@@ -3,9 +3,10 @@ class ChangeStatusCommand extends frozor.Command{
         super({
             name: 'status',
             aliases: ['changestatus', 'setstatus'],
-            description: 'Sets your status.',
-            args: frozor.CommandArg.getVariableArgs(300, 'args', 'String', false)
+            description: 'Sets your status.'
         });
+
+        this.addInfiniteArgs('args');
     }
 
     async run(msg, bot, extra){

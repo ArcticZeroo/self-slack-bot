@@ -2,9 +2,11 @@ class ClapCommand extends frozor.Command{
     constructor(){
         super({
             name: 'clap',
-            description: 'Clapify yo messages',
-            args: frozor.CommandArg.getVariableArgs(3000, 'words', 'String')
+            description: 'Clapify yo messages'
         });
+
+        this.addInfiniteArgs('words');
+        this.minArgs = 1;
     }
 
     async run(msg){

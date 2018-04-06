@@ -3,9 +3,11 @@ class RepeatTextCommand extends frozor.Command{
         super({
             name: 'repeat',
             aliases: ['r'],
-            description: 'Repeats specified text n times',
-            args: frozor.CommandArg.getVariableArgs(3000, 'words', 'String')
+            description: 'Repeats specified text n times'
         });
+
+        this.addInfiniteArgs('words');
+        this.minArgs = 1;
     }
 
     async run(msg){
