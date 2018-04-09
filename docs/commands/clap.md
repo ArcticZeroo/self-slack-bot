@@ -2,7 +2,7 @@
 
 ### Description
 
-Clapify yo messages
+Clapify yo messages (edits claps into every space in your text)
 
 ### Usage
 

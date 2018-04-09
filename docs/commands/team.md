@@ -6,7 +6,7 @@ teaminfo, teams, tinfo
 
 ### Description
 
-Information about a specified team
+Information about your current team
 
 ### Usage
 

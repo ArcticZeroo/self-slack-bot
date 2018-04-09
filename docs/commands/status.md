@@ -6,7 +6,7 @@ changestatus, setstatus
 
 ### Description
 
-Sets your status.
+Sets your status using text args. Uses property text, emoji, and propagate (whether it should go to all teams)
 
 ### Usage
 

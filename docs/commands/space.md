@@ -2,7 +2,7 @@
 
 ### Description
 
-Spacify yo text!
+Spacify yo text! (edits spaces between every character in your text)
 
 ### Usage
 

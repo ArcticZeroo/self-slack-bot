@@ -2,7 +2,7 @@
 
 ### Description
 
-Attach a message!
+Attach a message! You provide the args based on slack's API
 
 ### Usage
 
