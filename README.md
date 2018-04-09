@@ -70,6 +70,8 @@ or
 ```
 
 Available commands:
+_Note: These docs are outdated. Check out each command's documentation in [docs/commands](docs/commands)_
+
 * animatestatus
     * Animates your status. Slack updates status every 5 seconds, and mobile doesn't seem to update often. You can specify the frame time but if it's too short it'll basically be skipped. 
     * `!!animatestatus <ANIMATION_NAME> [Optional INTERVAL in ms]`
