@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "frozor-commands": "^5.0.3",
+    "frozor-commands": "^5.0.5",
     "frozor-logger": "^3.0.x",
     "frozor-slack-attachments": "^1.0.x",
     "frozor-slackbot": "^4.0.x",

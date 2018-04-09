@@ -18,6 +18,6 @@ Search information about a meme
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-Search Term||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|Search Term||Yes|String[]|

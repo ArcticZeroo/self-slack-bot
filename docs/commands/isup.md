@@ -18,6 +18,6 @@ Check whether a website is down or not
 
 #### Max Args: `1`
 
-Name|Description|Required|Type
-
-Website||Yes|String
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|Website||Yes|String|

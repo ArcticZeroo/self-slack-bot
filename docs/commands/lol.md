@@ -18,6 +18,6 @@ Gets "lol" count for a user
 
 #### Max Args: `1`
 
-Name|Description|Required|Type
-
-user||Yes|String
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|user||Yes|String|

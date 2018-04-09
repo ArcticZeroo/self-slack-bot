@@ -18,6 +18,6 @@ Sends all text right-to-left
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-Text||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|Text||Yes|String[]|

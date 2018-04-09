@@ -14,6 +14,6 @@ Spacify yo text! (edits spaces between every character in your text)
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-words||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|words||Yes|String[]|

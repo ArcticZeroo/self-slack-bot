@@ -18,6 +18,6 @@ Evaluates JS... scary!
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-terms||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|terms||Yes|String[]|

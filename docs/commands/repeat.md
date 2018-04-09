@@ -18,6 +18,6 @@ Repeats specified text n times
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-words||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|words||Yes|String[]|

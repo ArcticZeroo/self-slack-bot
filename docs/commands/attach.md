@@ -14,6 +14,6 @@ Attach a message! You provide the args based on slack's API
 
 #### Max Args: `Infinite`
 
-Name|Description|Required|Type
-
-args||Yes|String[]
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|args||Yes|String[]|

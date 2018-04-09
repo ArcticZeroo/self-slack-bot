@@ -18,6 +18,6 @@ Information about a specified user
 
 #### Max Args: `1`
 
-Name|Description|Required|Type
-
-user||Yes|
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|user||Yes||

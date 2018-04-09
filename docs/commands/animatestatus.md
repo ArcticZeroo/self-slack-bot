@@ -18,8 +18,7 @@ Sets your animated status
 
 #### Max Args: `2`
 
-Name|Description|Required|Type
-
-status||Yes|String
-
-interval||No|Number
+| Name | Description | Required | Type |
+|------|-------------|----------|------|
+|status||Yes|String|
+|interval||No|Number|
