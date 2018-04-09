@@ -3,7 +3,7 @@ class ChangeStatusCommand extends frozor.Command{
         super({
             name: 'status',
             aliases: ['changestatus', 'setstatus'],
-            description: 'Sets your status.'
+            description: 'Sets your status using text args. Uses property text, emoji, and propagate (whether it should go to all teams)'
         });
 
         this.addInfiniteArgs('args');

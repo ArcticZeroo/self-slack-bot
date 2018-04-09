@@ -4,7 +4,8 @@ class CustomEmojiCommand extends frozor.Command{
     constructor(){
         super({
             name: 'emoji',
-            aliases: ['emojileaderboard', 'myemoji', 'emojiuse']
+            aliases: ['emojileaderboard', 'myemoji', 'emojiuse'],
+            description: 'Sends your top 15 emoji used on this workspace.'
         });
     }
 

@@ -3,7 +3,7 @@ class UserInfoCommand extends frozor.Command{
         super({
             name: 'team',
             aliases: ['teaminfo', 'teams', 'tinfo'],
-            description: 'Information about a specified team'
+            description: 'Information about your current team'
         });
     }
 

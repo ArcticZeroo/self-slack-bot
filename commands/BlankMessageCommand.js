@@ -2,7 +2,8 @@ class BlankMessageCommand extends frozor.Command {
     constructor() {
         super({
             name: 'blank',
-            aliases: ['blankmessage']
+            aliases: ['blankmessage'],
+            description: 'Send a blank message using the RTL character.'
         });
 
         this.maxArgs = Number.POSITIVE_INFINITY;

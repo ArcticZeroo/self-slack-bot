@@ -2,7 +2,8 @@ class CustomEmojiCommand extends frozor.Command{
     constructor(){
         super({
             name: 'customemoji',
-            aliases: ['emoji']
+            aliases: ['emoji'],
+            description: 'Load your most used custom emoji and the amount of team custom emoji.'
         });
     }
 

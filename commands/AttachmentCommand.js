@@ -2,7 +2,7 @@ class AttachmentCommand extends frozor.Command{
     constructor(){
         super({
             name: 'attach',
-            description: 'Attach a message!'
+            description: 'Attach a message! You provide the args based on slack\'s API'
         });
 
         this.addInfiniteArgs('args');

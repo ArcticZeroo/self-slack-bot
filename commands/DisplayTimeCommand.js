@@ -8,7 +8,7 @@ class DisplayTimeCommand extends frozor.Command{
     }
 
     async run(msg){
-        return msg.edit('', {attachments: [{mrkdwn_in: ['text'], color: Colors.MATERIAL_BLUE, text: `Right now, it is \`${new Date().toLocaleString()}\``}]});
+        return msg.edit('', {attachments: [{mrkdwn_in: ['text'], color: Colors.MATERIAL_BLUE, text: `Right now, it is \`${new Date().toLocaleString()}\` for me.`}]});
     }
 }
 
