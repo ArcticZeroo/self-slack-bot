@@ -2,6 +2,12 @@
 
 Self bot for slack, written in node.js!
 
+## Archive Notice
+
+This project relied on legacy tokens, which allowed bots to act _as the current user_ despite appearing to use API methods like any other Web API bot. Slack recently disabled the ability to retrieve these legacy tokens, and therefore it is no longer possible to run this self bot (for the record, this was the right thing to do on slack's part). There is probably a hack regarding token grabbning in a browser window, but I don't feel good about researching or implementing such a thing.
+
+As a result, this repository has been archived until further notice. Despite no updates since 2018, it worked until the recent legacy tokens change.
+
 ## Features
 
 * Commands that can only be activated by you!
